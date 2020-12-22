@@ -1,0 +1,45 @@
+doctype html
+include ./mixins/header.pug
+include ./mixins/containers.pug
+include ./mixins/containers_aph.pug
+include ./mixins/title.pug
+include ./mixins/quotes.pug
+
+- var themePath = '../themes/aph/';
+- var globalAssets = '../assets/all/';
+- var defaultBgr = 'backgrounds/bgr_px_mountains.jpg';
+
++header('NI-APH', 'Architecture of Computer Games', 'Adam Vesecký', themePath + 'resources/favicon.png', themePath + 'theme_aph.scss')
+
+.reveal
+	.slides
+		+title('Tutorial 2, Part 2', 'ThreeJS', 'color-azure-light')
+		+frameInboxMid('ThreeJS')
+			ul
+				li HTML5 3D Animation Engine
+				li 3D JavaScript library
+				li WebGL-based
+				li Full scene graph, sprites, meshes, LOD, camera, shaders, animations
+				li Ideal for any 3D scene incorporated into a web page
+		+frameInboxMid('Links')
+			ul
+				li
+					a(href="https://threejs.org/") Main Page
+				li
+					a(href="https://github.com/mrdoob/three.js") Github
+				li
+					a(href="https://threejs.org/docs/index.html") Documentation
+				li
+					a(href="https://threejs.org/examples") Examples
+		+frameInbox('Architecture')
+			.center
+				img.height-800(src=globalAssets+'diag_threejs_packages.svg')
+		+frameInbox('Classes')
+			.center
+				img.height-800(src=globalAssets+'diag_threejs_classes.svg')        
+		+frameInbox('Basic setup')
+			.code.text-xs
+				include ../assets/snippets_generated/threejs.html
+
++footer('Adam Vesecký (FIT CTU)', 'Architecture of Computer Games')
+script(src!='../../scripts/reveal-setup.js')

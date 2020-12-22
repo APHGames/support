@@ -1,0 +1,17 @@
+<pre><span class="linenum">   1</span> <span class="token keyword">class</span> <span class="token class-name">Point</span> <span class="token punctuation">{</span>
+<span class="linenum">   2</span>     x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="linenum">   3</span>     y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="linenum">   4</span>     
+<span class="linenum">   5</span>     <span class="token keyword">protected</span> <span class="token keyword">static</span> instances <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// initial value</span>
+<span class="linenum">   6</span>    
+<span class="linenum">   7</span>     <span class="token keyword">constructor</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="linenum">   8</span>       Point<span class="token punctuation">.</span>instances<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="linenum">   9</span>       <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+<span class="linenum">  10</span>       <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+<span class="linenum">  11</span>     <span class="token punctuation">}</span>
+<span class="linenum">  12</span> <span class="token punctuation">}</span>
+<span class="linenum">  13</span>   
+<span class="linenum">  14</span> <span class="token comment">// abstract class</span>
+<span class="linenum">  15</span> <span class="token class-name"><span class="token keyword">abstract</span></span> <span class="token keyword">class</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+<span class="linenum">  16</span>     <span class="token keyword">abstract</span> <span class="token function">calcSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="linenum">  17</span> <span class="token punctuation">}</span></pre>

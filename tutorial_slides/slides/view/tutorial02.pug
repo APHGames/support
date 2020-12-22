@@ -1,0 +1,69 @@
+doctype html
+include ./mixins/header.pug
+include ./mixins/containers.pug
+include ./mixins/containers_aph.pug
+include ./mixins/title.pug
+include ./mixins/quotes.pug
+
+- var themePath = '../themes/aph/';
+- var globalAssets = '../assets/all/';
+- var defaultBgr = 'backgrounds/bgr_px_mountains.jpg';
+
++header('NI-APH', 'Architecture of Computer Games', 'Adam Vesecký', themePath + 'resources/favicon.png', themePath + 'theme_aph.scss')
+
+.reveal
+	.slides
+		+title('Tutorial 2', 'PixiJS', 'color-azure-light')
+		+frameInboxMid('PixiJS')
+			ul
+				li HTML5 Creation Engine
+				li Leightweight 2D JavaScript library
+				li Supports both CanvasAPI and WebGL (since version 5 it's only WebGL)
+				li Full scene graph, sprite sheets, filters, shaders
+				li Similar to PhaserJS game engine
+				li Ideal for simple games and rapid prototyping
+		+frameInboxMid('Links')
+			ul
+				li
+					a(href="https://www.pixijs.com/") Main Page
+				li
+					a(href="https://github.com/pixijs/pixi.js") Github
+				li
+					a(href="https://pixijs.download/dev/docs/index.html") Documentation
+				li
+					a(href="https://pixijs.io/examples/#/demos-basic/container.js") Examples
+		+frameInbox('Architecture')
+			.center
+				img.height-800(src=globalAssets+'diag_pixi_packages.svg')
+		+frameInbox('Classes')
+			.center
+				img.height-800(src=globalAssets+'diag_pixi_classes.svg')        
+		+frameInbox('Interesting Plugins')
+			ul
+				li
+					a(href="https://github.com/pixijs/pixi-filters") pixi-filters
+				li
+					a(href="https://github.com/pixijs/pixi-compressed-textures") pixi-compressed-textures
+				li
+					a(href="https://github.com/pixijs/pixi-ui") pixi-ui
+				li
+					a(href="https://github.com/pixijs/pixi-particles") pixi-particles
+				li
+					a(href="https://github.com/pixijs/pixi-sound") pixi-sound
+				li
+					a(href="https://github.com/davidfig/pixi-viewport") pixi-viewport
+				li
+					a(href="https://github.com/theGolyo/PixiTweener") PixiTweener
+				li
+					a(href="https://github.com/kreezii/pixi5-dragonbones") pixi5-dragonbones
+				li
+					a(href="https://github.com/eXponenta/pixi5-svg") pixi5-svg
+				li
+					a(href="https://github.com/blastrain/pixi-after-effects") pixi-after-effects
+				li
+					a(href="https://github.com/bfanger/pixi-inspector") pixi-inspector
+				li
+					a(href="https://github.com/cixzhang/SpritesheetGenerator") SpritesheetGenerator
+
++footer('Adam Vesecký (FIT CTU)', 'Architecture of Computer Games')
+script(src!='../../scripts/reveal-setup.js')

@@ -1,0 +1,12 @@
+<pre><span class="linenum">   1</span> <span class="token keyword">enum</span> Color <span class="token punctuation">{</span>
+<span class="linenum">   2</span>     Gray<span class="token punctuation">,</span> <span class="token comment">// 0</span>
+<span class="linenum">   3</span>     Red<span class="token punctuation">,</span> <span class="token comment">// 1</span>
+<span class="linenum">   4</span>     Green <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token comment">// 100</span>
+<span class="linenum">   5</span>     Blue<span class="token punctuation">,</span> <span class="token comment">// 101</span>
+<span class="linenum">   6</span>     Yellow <span class="token operator">=</span> <span class="token number">2</span> <span class="token comment">// 2</span>
+<span class="linenum">   7</span> <span class="token punctuation">}</span>
+<span class="linenum">   8</span>    
+<span class="linenum">   9</span> <span class="token keyword">const</span> myColor<span class="token operator">:</span> Color <span class="token operator">=</span> Color<span class="token punctuation">.</span>Green
+<span class="linenum">  10</span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myColor<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Prints: 100</span>
+<span class="linenum">  11</span>   
+<span class="linenum">  12</span> <span class="token keyword">const</span> colors <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>Color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// gets all enum keys</span></pre>

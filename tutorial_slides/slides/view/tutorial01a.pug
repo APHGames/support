@@ -1,0 +1,89 @@
+doctype html
+include ./mixins/header.pug
+include ./mixins/containers.pug
+include ./mixins/containers_aph.pug
+include ./mixins/title.pug
+include ./mixins/quotes.pug
+
+- var themePath = '../themes/aph/';
+- var globalAssets = '../assets/all/';
+- var defaultBgr = 'backgrounds/bgr_px_mountains.jpg';
+
++header('NI-APH', 'Architecture of Computer Games', 'Adam Vesecký', themePath + 'resources/favicon.png', themePath + 'theme_aph.scss')
+
+.reveal
+	.slides
+		+title('Tutorial 1, Part 1', 'Environment', 'color-azure-light')
+		+frameInboxMid('Important links')
+			ul
+				li
+					a(href="https://aph.dodo.me") https://aph.dodo.me
+					|  - dashboard, lectures, docs
+				li
+					a(href="https://gitlab.fit.cvut.cz/NI-APH/materials") https://gitlab.fit.cvut.cz/NI-APH/materials
+					|  - all materials
+				li
+					a(href="https://github.com/dodocloud/games-course") https://github.com/dodocloud/games-course
+					|  - all materials
+		+frameInboxMid('Prerequisities')
+			ul
+				li Git
+				li NodeJS
+				li Visual Studio Code
+					ul
+						li Debugger for Chrome
+						li ESLint
+		+frameInboxMid('Basic Types')
+			.code.text-sm
+				include ../assets/snippets_generated/basic_types.html
+		+frameInboxMid('Declarations')
+			.code.text-sm
+				include ../assets/snippets_generated/declarations.html
+		+frameInboxMid('Functions')
+			.code.text-sm
+				include ../assets/snippets_generated/functions.html
+		+frameInboxMid('Enumerators')
+			.code.text-sm
+				include ../assets/snippets_generated/enums.html
+		+frameInboxMid('For loop')
+			.code.text-sm
+				include ../assets/snippets_generated/for_loop.html
+		+frameInboxMid('Maps')
+			.code.text-sm
+				include ../assets/snippets_generated/maps.html
+		+frameInboxMid('Array Operations')
+			.code.text-sm
+				include ../assets/snippets_generated/array_operations.html
+		+frameInboxMid('Classes')
+			.code.text-sm
+				include ../assets/snippets_generated/classes.html
+		+frameInboxMid('Inheritance')
+			.code.text-sm
+				include ../assets/snippets_generated/inheritance.html
+		+frameInboxMid('Interfaces')
+			.code.text-sm
+				include ../assets/snippets_generated/interface.html
+		+frameInboxMid('Getters, Setters')
+			.code.text-sm
+				include ../assets/snippets_generated/getters.html
+		+frameInboxMid('Generics')
+			.code.text-sm
+				include ../assets/snippets_generated/generics.html
+		+frameInboxMid('Other Constructs')
+			.code.text-sm
+				include ../assets/snippets_generated/other_constructs.html
+		+frameInboxMid('Other Constructs')
+			.code.text-sm
+				include ../assets/snippets_generated/other_constructs_2.html
+		+frameInboxMid('Other Constructs')
+			.code.text-sm
+				include ../assets/snippets_generated/other_constructs_3.html
+		+frameInboxMid('Context Binding')
+			.code.text-sm
+				include ../assets/snippets_generated/context_bunding.html
+		+frameInboxMid('Exports and Imports')
+			.code.text-sm
+				include ../assets/snippets_generated/exports_imports.html
+
++footer('Adam Vesecký (FIT CTU)', 'Architecture of Computer Games')
+script(src!='../../scripts/reveal-setup.js')
