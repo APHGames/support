@@ -1,20 +1,27 @@
-var Jimp = require('jimp');
-var fs = require('fs');
+const Jimp = require('jimp');
+const fs = require('fs');
+const path = require('path');
 
-async function main() {
+async function main(sourceImgPath, targetImgPath) {
     // Read the image.
     const iterations = 10;
+    const blockSize = 3;
 
-	const width = 375;
-	const height = 248;	
+    const sourceImg = await (await Jimp.read(sourceImgPath)).clone();
+    const targetImg = await Jimp.read(targetImgPath);
 
-	const finalColor = 0x6f8ce9ff;
+    if(sourceImg.getWidth() !== targetImg.getWidth() || sourceImg.getHeight() !== targetImg.getHeight()) {
+        throw new Error('Images must have the same size!');
+    }
 
-    const buffer = await new Jimp(width * 2, height * 2, 0x000000ff);
+    const width = Math.floor(sourceImg.getWidth() / blockSize);
+    const height = Math.floor(sourceImg.getHeight() / blockSize);
 
 	const processedPixels = new Set();
-	const totalPixels = width * height;
+	const totalPixels = Math.floor(width * height);
 	const steps = Math.floor(totalPixels / iterations);
+
+    await sourceImg.writeAsync(path.resolve(__dirname, 0 + '.png'));
 
 	for(let i = 0; i < iterations; i++) {
 		for(let j = 0; j < steps; j++) {
@@ -30,18 +37,20 @@ async function main() {
 			}
 			processedPixels.add(pointer);
 			
-			const xCoord = pointer % width;
+			const xCoord = (pointer % width);
 			const yCoord = Math.floor(pointer / width);
 			
-			buffer.setPixelColor(finalColor, xCoord * 2, yCoord * 2);
-			buffer.setPixelColor(finalColor, xCoord * 2 + 1, yCoord * 2);
-			buffer.setPixelColor(finalColor, xCoord * 2, yCoord * 2 + 1);
-			buffer.setPixelColor(finalColor, xCoord * 2 + 1, yCoord * 2 + 1);
-			
+            for(let k = 0; k < blockSize; k++) {
+                for(let l = 0; l < blockSize; l++) {
+                    const color = targetImg.getPixelColor(xCoord * blockSize + k, yCoord * blockSize + l);
+                    await sourceImg.setPixelColor(color, xCoord * blockSize + k, yCoord * blockSize + l);
+                }
+            }
 		}
-		
-		await buffer.writeAsync(i + '.png');
+        await sourceImg.writeAsync(path.resolve(__dirname, (i + 1) + '.png'));
 	}
+    await targetImg.writeAsync(path.resolve(__dirname, iterations + '.png'));
+
 }
 
-main()
+main(path.resolve(__dirname, `input.png`), path.resolve(__dirname, `output.png`))
