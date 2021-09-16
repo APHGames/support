@@ -4,59 +4,38 @@
 const { parse } = require('node-html-parser');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const path = require('path');
 
-// TODO set it according to the current state
-const lastPage = 10;
+const executor = async (dataPath) => {
+    let output = [];
 
-const executor = async () => {
-  let output = [];
-  
-  for(let i = 1; i <= lastPage; i++) {
-    const data = await fetch('https://games.tiscali.cz/' + i);
-    const resp = await data.text();
-  
-    const root = parse(resp);
-  
-    const imageWrappers = root.querySelectorAll('.image-wrapper');
-    imageWrappers.map(iw => {
-      const image = iw.querySelector('img');
-      const src = image.getAttribute('data-src');
-      if(src) {
-        iw.set_content(`<img src="${src}">`);
-      }
-    });
-  
-    // remove infos
-    const infos = root.querySelectorAll('.disc-info');
-    infos.map(inf => inf.set_content(''));
- 
-    // download images
-    const allImages = root.querySelectorAll('img');
+    const allData = fs.readFileSync(dataPath, { encoding: 'utf-8' });
+    const lines = allData.split('\n');
+    
+    // todo.... the content is loaded by script or something...
+    for (let line of lines) {
+        const httpIdx = line.indexOf('http');
 
-    await Promise.all(
-      allImages.map(async image => {
-        const src = image.getAttribute('src');
+        if(httpIdx !== -1) {
+            const url = line.substr(httpIdx).trim();
+            const data = await fetch('url');
+            const resp = await data.text();
+            const root = parse(resp);
 
-        const newSrc = 'images/' + src.substring(src.lastIndexOf('/') + 1, src.lastIndexOf('jpg') + 3);
-
-        if(fs.existsSync(newSrc)) {
-          let imgBinary = await fetch(src);
-          const dest = fs.createWriteStream(newSrc);
-          imgBinary.body.pipe(dest);
+            const detail = root.querySelector('#article-detail');
+            if(detail) {
+                const h2 = root.querySelector('h2');
+                output.push('## ' + h2.text);
+                const allparagraphs = detail.querySelectorAll('p');
+                allparagraphs.forEach(p => output.push('- ' + p.text + '\n'));
+            } else {
+                console.log('Can\'t parse ' + url);
+            }
+            output.push('\n');
         }
-        image.setAttribute('src', newSrc);
-      })
-    );
-
-    const list = root.querySelectorAll('.article-item');
-    output.push(...list);
-
-    if((i % 10) === 0 || i === 100) {
-      console.log('Saving ' + i);
-      fs.writeFileSync(`data_${i-10}_${i}.html`, output.join('\n'));
-      output = [];
     }
-  }
+    fs.writeFileSync(path.resolve(__dirname, `data_content.md`), output.join('\n'));
+
 }
 
-executor();
+executor(path.resolve(__dirname, 'data_processed.json'));
