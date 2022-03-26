@@ -1,3 +1,4 @@
+const { setPixelColor } = require('jimp');
 const Jimp = require('jimp');
 
 const w = 800;
@@ -12,21 +13,23 @@ const colors = [
     0x101010ff
 ];
 
+const setColor = (img, color) => {
+    for(let x = 0; x < cellSize; x++) {
+        for(let y = 0; y < cellSize; y++) {
+            const offsetX = i * cellSize + x;
+            const offsetY = j * cellSize + y;
+            img.setPixelColor(color, offsetX, offsetY);
+        }
+    }
+}
+
 async function generate() {
 	const img =  await Jimp.create(w, h, '#111');
 
     for(let i = 0; i < Math.ceil(w / cellSize); i++) {
         for(let j = 0; j < Math.ceil(h / cellSize); j++) {
-
             const color = colors[Math.floor(Math.random() * colors.length)];            
-            for(let x = 0; x < cellSize; x++) {
-                for(let y = 0; y < cellSize; y++) {
-                    const offsetX = i * cellSize + x;
-                    const offsetY = j * cellSize + y;
-                    img.setPixelColor(color, offsetX, offsetY);
-                }
-            }
-
+            setColor(img, color);
         }
     }
 

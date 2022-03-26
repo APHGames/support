@@ -129,6 +129,4 @@ async function process(img, scale, iterations) {
     await image2.writeAsync(filename + '_otp.' + ext);	
 }
 
-process(path.resolve(__dirname, 'input_cheat.png'), 0.25, 2)
-process(path.resolve(__dirname, 'input_joypad.png'), 0.25, 1)
-process(path.resolve(__dirname, 'input_pinch.png'), 0.25, 1)
+process(path.resolve(__dirname, 'input_cheat.png'), 0.25, 2);
