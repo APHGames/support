@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
 
-const lastPage = 25;
+const lastPage = 30;
 
 const strPad = (str, length) => {
   if(str.strLength < length) {
