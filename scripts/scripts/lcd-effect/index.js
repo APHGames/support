@@ -2,13 +2,13 @@ const Jimp = require('jimp');
 const fs = require('fs');
 const path = require('path');
 
+const SCALE = 3;
+
 async function processInternal(image) {
     const width = image.bitmap.width; // the width of the image
     const height = image.bitmap.height; // the height of the image
 
-	const SCALE = 3;
     const image2 = await new Jimp(width * SCALE, height * SCALE, 0xff0000ff);
-
 
     for(let i = 0; i < width; i++) {
         for (let j = 0; j< height ; j++) {
@@ -32,10 +32,10 @@ async function process(img) {
     // Read the image.
     let image = await Jimp.read(img);
 	let image2 = await processInternal(image);
-		
+
 	const ext = img.substr(img.lastIndexOf('.') + 1);
 	const filename = img.substr(0, img.lastIndexOf('.'));
-    await image2.writeAsync(filename + '_otp.' + ext);	
+    await image2.writeAsync('output.' + ext);
 }
 
 process(path.resolve(__dirname, 'input.png'), 0.25, 2);

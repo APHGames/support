@@ -1,8 +1,7 @@
 const utils = require('../utils');
 const xml = require('xml2js');
-//var sel = require('xml-selector');
-// script for replacing colors in diagrams
 
+// script for replacing colors in diagrams
 const colorsToReplace = {
     'FF867F' : '7D0600',
     'FFF2E6' : 'A56B36',
@@ -43,13 +42,6 @@ files.forEach(async (file) => {
         return;
     }
     let content = utils.fileToStr(file);
-
-    //const parsedXml = await xml.parseStringPromise(content);
-    //console.log(parsedXml.svg.g);
-    
-    //let parsed = sel(content);
-    //parsed.find('Status').attr('Code');
-    //return;
 
     // at first use placeholders to avoid partial replacements
     const placeholder = 'COLOR_PLACEHOLDER_';

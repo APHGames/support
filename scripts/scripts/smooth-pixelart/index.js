@@ -1,6 +1,8 @@
 const Jimp = require('jimp');
-const fs = require('fs');
-const path = require('path');
+const utils = require('../utils');
+
+const SCALE = 0.25;
+const ITERATIONS = 2;
 
 function hsl2rgb (h, s, l) {
 
@@ -91,7 +93,7 @@ async function processInternal(image) {
 
             let orig = Jimp.rgbaToInt(red, green, blue, alpha);
             const hsl = hexToHSL(red, green, blue);
-            const rgb = hsl2rgb(hsl.h * 360, hsl.s * 100, hsl.l * 100 * 0.8); 
+            const rgb = hsl2rgb(hsl.h * 360, hsl.s * 100, hsl.l * 100 * 0.8);
 
             const bright  = Jimp.rgbaToInt(rgb.r, rgb.g, rgb.b, alpha);
 
@@ -116,17 +118,21 @@ async function process(img, scale, iterations) {
 	if(scale) {
 		image.scale(scale, Jimp.RESIZE_NEAREST_NEIGHBOR);
 	}
-	
+
 	let image2;
-	
+
 	for(let i = 0; i< iterations; i++) {
 		image2 = await processInternal(image);
 		image = image2;
 	}
-	
+
 	const ext = img.substr(img.lastIndexOf('.') + 1);
 	const filename = img.substr(0, img.lastIndexOf('.'));
-    await image2.writeAsync(filename + '_otp.' + ext);	
+    await image2.writeAsync(filename + '_otp.' + ext);
 }
 
-process(path.resolve(__dirname, 'input_cheat.png'), 0.25, 2);
+const files = utils.searchFiles('.', '.png');
+
+for(let file of files) {
+    process(file, SCALE, ITERATIONS);
+}

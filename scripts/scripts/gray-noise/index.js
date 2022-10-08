@@ -13,7 +13,7 @@ const colors = [
     0x101010ff
 ];
 
-const setColor = (img, color) => {
+const setColor = (img, color, i, j) => {
     for(let x = 0; x < cellSize; x++) {
         for(let y = 0; y < cellSize; y++) {
             const offsetX = i * cellSize + x;
@@ -28,8 +28,8 @@ async function generate() {
 
     for(let i = 0; i < Math.ceil(w / cellSize); i++) {
         for(let j = 0; j < Math.ceil(h / cellSize); j++) {
-            const color = colors[Math.floor(Math.random() * colors.length)];            
-            setColor(img, color);
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            setColor(img, color, i, j);
         }
     }
 

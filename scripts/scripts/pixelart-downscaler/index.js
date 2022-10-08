@@ -6,7 +6,7 @@ const utils = require('../utils');
 // pictures must be trimmed!!!
 const MAX_SCALING = 7;
 
-async function process(img, scale, iterations) {
+async function process() {
     const files = utils.searchFiles('.', 'png');
     for(let file of files) {
         let image = await Jimp.read(file);

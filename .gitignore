@@ -22,11 +22,3 @@ slides/assets/generated/
 .env.production.local
 
 npm-debug.log*
-
-/.idea/
-.log
-src/css/infima.css
-.ignore
-wiki/static/slides/
-wiki/static/examples/
-tutorial_slides/build_slides/
