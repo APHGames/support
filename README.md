@@ -24,6 +24,12 @@
 
 ![Image](./docs/vivus.png)
 
+### Scripts/bmfont-alphafix
+- a script that fixes glyphs produced by Bitmap font generator (BMFont) - transforms black color into alpha channel
+- Usage
+  - put bitmap font into the project folder
+  - run `node index.js`
+  
 ### Scripts/brand-changer
 - a script that goes through the SVG files and string-replaces given colors
 - Usage
