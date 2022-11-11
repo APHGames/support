@@ -37,6 +37,12 @@
   - declare colors to replace within index.js
   - run `node index.js`
 
+### Scripts/date-changer
+- a script that changes EXIF Date Taken value of jpeg images
+- Usage
+  - put your JPG images into the folder from which you execute the script
+  - run `node index.js`
+
 ### Scripts/domain-checker
 - a brute-force script I used to find some great names for my ECSLite library
 - spoiler alert: I didn't find any name
