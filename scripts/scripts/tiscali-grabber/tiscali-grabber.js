@@ -22,9 +22,9 @@ const executor = async () => {
     // first read the original document..we need to know the name of the last article
     const articles = fs.readFileSync('data_complete.txt', 'utf-8');
     const lastArticle = articles.split('\n')[0].split(' ');
-    const lastArticleLink = lastArticle[lastArticle.length - 1];
-
-
+    let lastArticleLink = lastArticle[lastArticle.length - 1];
+    // make it domain agnostic
+    lastArticleLink = lastArticleLink.substring(lastArticleLink.lastIndexOf('/'));
     let output = [];
     let i = 1;
 
@@ -44,7 +44,8 @@ const executor = async () => {
             const titleHref = titleNode.getAttribute('href').trim();
             const date = dateNode.rawText.trim();
 
-            if(titleHref === lastArticleLink) {
+            const titleSuffix = titleHref.substring(titleHref.lastIndexOf('/'));
+            if(titleSuffix === lastArticleLink) {
                 exit = true;
                 break;
             }
