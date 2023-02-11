@@ -16,6 +16,13 @@
 
 ![Image](./docs/patterns.png)
 
+### Text-Reveal
+- Text reveal animation using baffleJS
+- **Installation**
+  - just open `index.html`
+
+![Image](./docs/reveal.png)
+
 ### Vivus
 - SVG animation used in Lectures in 2019
 - Installation
