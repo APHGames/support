@@ -7,7 +7,7 @@ const process = (filename) => {
     const yearMap = new Map();
 
     for(let line of allLines) {
-        if(line.length !== 0) {
+        if(line.length !== 0 && line.length !== 1) {
             const split = line.split(' ');
             const day = split[0];
             const dayNum = parseInt(day.substring(0, day.length - 1));

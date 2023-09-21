@@ -45,7 +45,7 @@ const executor = async () => {
             const date = dateNode.rawText.trim();
 
             const titleSuffix = titleHref.substring(titleHref.lastIndexOf('/'));
-            if(titleSuffix === lastArticleLink) {
+            if(titleSuffix === lastArticleLink || title.indexOf('Zlatá kostka je nová česká') !== -1) {
                 exit = true;
                 break;
             }
