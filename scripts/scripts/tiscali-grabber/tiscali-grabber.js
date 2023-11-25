@@ -54,7 +54,7 @@ const executor = async () => {
             lastDate = date;
         }
 
-        if(exit) {
+        if(exit || lastDate.indexOf('19. 9.') !== -1) {
             break;
         }
         console.log(`Processing ${lastDate}`)
