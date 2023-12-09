@@ -1,0 +1,13 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	background: #00FF00;
+	overflow: hidden;
+}
+canvas {
+	position: absolute;
+}
+.fab {
+	color: #ff0000;
+}

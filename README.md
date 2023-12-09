@@ -9,6 +9,14 @@
 
 ![Image](./docs/countdown.png)
 
+### Particles
+- top-down emitted particles with green canvas background
+- Installation
+  - just open `index.html`
+
+![Image](./docs/particles.png)
+
+
 ### Patterns
 - Padolsey Pattern Generator, used for slides as a background
 - **Installation**
