@@ -126,6 +126,14 @@
   - put your images into the script folder (they must have .png extension) 
   - run `node index.js`
 
+### Scripts/scanline-animation
+- creates a scanline reveal animation of an image
+- Usage
+  - put your images into the script folder (they must have .png extension) 
+  - run `node index.js`
+
+![Image](./docs/scanline.png)
+
 ### Scripts/smooth-pixelart
 - upscales an image to get a smooth pixel-art appearance (still WIP)
 - Usage

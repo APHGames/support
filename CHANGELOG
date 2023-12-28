@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.18.0] - 2023-12-28
+### Added
+Scanline animation
+
 ## [0.17.0] - 2023-12-09
 ### Added
 Particles effect

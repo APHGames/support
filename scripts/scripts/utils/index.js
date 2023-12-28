@@ -2,6 +2,12 @@ var fs = require("fs");
 var path = require("path");
 
 module.exports = {
+
+    pad: function(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+    },
 	deleteFolderRecursive: function (path, keepDir) {
 		if (fs.existsSync(path)) {
 			fs.readdirSync(path).forEach(function (file, index) {
@@ -54,8 +60,8 @@ module.exports = {
 			// copy content directly
 			module.exports.createDirAlongThePath(target);
 			targetFolder = target;
-		} 
-	
+		}
+
 		//copy
 		if (fs.lstatSync(source).isDirectory()) {
 			const files = fs.readdirSync(source);
@@ -84,7 +90,7 @@ module.exports = {
 		if(Array.isArray(startPath)) {
 			startPath.forEach(path => {
 				output = output.concat(module.exports.searchFiles(path, filter, pathMask));
-			})			
+			})
 			return output;
 		}
 
@@ -99,7 +105,7 @@ module.exports = {
 			if (stat.isDirectory() && !filename.includes('node_modules')) {
 				output = output.concat(module.exports.searchFiles(filename, filter, pathMask));
 			}
-			else if ((!pathMask || startPath.indexOf('/' + pathMask + '/') >= 0 || startPath.endsWith(pathMask)) 
+			else if ((!pathMask || startPath.indexOf('/' + pathMask + '/') >= 0 || startPath.endsWith(pathMask))
 			&& (!filter || (Array.isArray(filter) && filter.filter(f => filename.indexOf(f) >= 0).length)  || filename.indexOf(filter) >= 0)) {
 				output.push(filename);
 			};
