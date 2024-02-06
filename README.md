@@ -24,6 +24,13 @@
 
 ![Image](./docs/patterns.png)
 
+### Snow
+- 8 bit snow animation
+- **Installation**
+  - just open `index.html`
+
+![Image](./docs/snow.png)
+
 ### Text-Reveal
 - Text reveal animation using baffleJS
 - **Installation**
