@@ -45,7 +45,7 @@ const executor = async () => {
             const date = dateNode.rawText.trim();
 
             const titleSuffix = titleHref.substring(titleHref.lastIndexOf('/'));
-            if(titleSuffix === lastArticleLink || title.indexOf('Zlatá kostka je nová česká') !== -1) {
+            if(titleSuffix === lastArticleLink) {
                 exit = true;
                 break;
             }
@@ -54,7 +54,7 @@ const executor = async () => {
             lastDate = date;
         }
 
-        if(exit || lastDate.indexOf('19. 9.') !== -1) {
+        if(exit || lastDate.indexOf('23. 11.') !== -1) {
             break;
         }
         console.log(`Processing ${lastDate}`)
