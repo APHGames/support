@@ -9,6 +9,13 @@
 
 ![Image](./docs/countdown.png)
 
+### Genuar text
+- a terminal-like text with flickery animation
+- Installation
+  - just open `index.html`
+
+![Image](./docs/genuar.png)
+
 ### Particles
 - top-down emitted particles with green canvas background
 - Installation
