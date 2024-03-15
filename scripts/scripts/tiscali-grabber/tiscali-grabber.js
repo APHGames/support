@@ -25,6 +25,7 @@ const executor = async () => {
     let lastArticleLink = lastArticle[lastArticle.length - 1];
     // make it domain agnostic
     lastArticleLink = lastArticleLink.substring(lastArticleLink.lastIndexOf('/'));
+    console.log('Searching until last article... ' + lastArticleLink);
     let output = [];
     let i = 1;
 
@@ -43,9 +44,9 @@ const executor = async () => {
             const title = titleNode.rawText.trim();
             const titleHref = titleNode.getAttribute('href').trim();
             const date = dateNode.rawText.trim();
-
             const titleSuffix = titleHref.substring(titleHref.lastIndexOf('/'));
-            if(titleSuffix === lastArticleLink) {
+
+            if(titleSuffix.trim() === lastArticleLink.trim()) {
                 exit = true;
                 break;
             }
@@ -54,7 +55,7 @@ const executor = async () => {
             lastDate = date;
         }
 
-        if(exit || lastDate.indexOf('23. 11.') !== -1) {
+        if(exit) {
             break;
         }
         console.log(`Processing ${lastDate}`)

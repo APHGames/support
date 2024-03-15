@@ -73,6 +73,13 @@
   - declare colors to replace within index.js
   - run `node index.js`
 
+### Scripts/clips-size-check
+- a script that prints out sizes, durations, bitrates and dimensions of video files
+- Usage
+  - put your videos into the folder from which you execute the script
+  - run `node index.js`
+
+
 ### Scripts/date-changer
 - a script that changes EXIF Date Taken value of jpeg images
 - Usage

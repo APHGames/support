@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.22.0] - 2024-03-15
+### Added
+Clip size script
+Update Tiscali index
+
 ## [0.21.0] - 2024-02-15
 ### Added
 Add genuar text effect
